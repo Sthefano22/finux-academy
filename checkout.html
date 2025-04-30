@@ -52,12 +52,23 @@
                                         <div class="invalid-feedback">Por favor ingresa tu número telefónico</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="university" class="form-label">Universidad</label>
+                                        <label for="university" class="form-label">Universidad o Instituto</label>
                                         <input type="text" class="form-control" id="university" placeholder="Ejemplo: PUCP">
                                     </div>
                                     <div class="col-12">
-                                        <label for="course" class="form-label">Curso que necesitas asesoría</label>
-                                        <input type="text" class="form-control" id="course" placeholder="Ejemplo: Redacción Académica">
+                                        <label for="subject" class="form-label">Curso que necesitas asesoría</label>
+                                        <select class="form-select" id="subject" name="subject" required>
+                                            <option value="" disabled selected>Selecciona un curso</option>
+                                            <option value="redaccion_academica">Redacción Académica</option>
+                                            <option value="metodologia_investigacion">Metodología de la Investigación</option>
+                                            <option value="argumentacion">Argumentación</option>
+                                            <option value="tecnicas_estudio">Técnicas de Estudio</option>
+                                            <option value="gestion_proyectos">Gestión de Proyectos</option>
+                                            <option value="estadistica_basica">Estadística Básica</option>
+                                            <option value="programacion_basica">Programación Básica</option>
+                                            <option value="ingles_academico">Inglés Académico</option>
+                                        </select>
+                                        <div class="invalid-feedback">Por favor selecciona un curso</div>
                                     </div>
                                 </div>
 
@@ -90,9 +101,9 @@
                                         <p class="text-muted">Escanea este código con la app Yape</p>
                                     </div>
                                     <div class="alert alert-primary">
-                                        <strong>Número Yape:</strong> 947 337 085<br>
-                                        <strong>Nombre:</strong> Finux Academy SAC<br>
-                                        <strong>Monto:</strong> S/25.00
+                                        <strong>Número Yape:</strong> 904 931 423 <br>
+                                        <strong>Nombre:</strong> Salvador Orbegoso Herrera <br>
+                                        <strong>Monto:</strong> S/. 
                                     </div>
                                 </div>
                             </form>
@@ -108,25 +119,25 @@
                             <div id="packageSummary">
                                 <div class="summary-item d-flex justify-content-between">
                                     <span>Paquete:</span>
-                                    <span id="packageName" class="fw-bold">1 Hora de Asesoría</span>
+                                    <span id="packageName" class="fw-bold"> </span>
                                 </div>
                                 <div class="summary-item d-flex justify-content-between">
                                     <span>Precio regular:</span>
-                                    <span id="regularPrice" class="text-decoration-line-through text-muted">S/38</span>
+                                    <span id="regularPrice" class="text-decoration-line-through text-muted"> </span>
                                 </div>
                                 <div class="summary-item d-flex justify-content-between">
                                     <span>Descuento:</span>
-                                    <span id="discount" class="text-success">-S/13</span>
+                                    <span id="discount" class="text-success"> </span>
                                 </div>
                                 <div class="summary-item d-flex justify-content-between">
                                     <span>Precio final:</span>
-                                    <span id="finalPrice" class="fw-bold">S/25</span>
+                                    <span id="finalPrice" class="fw-bold"> </span>
                                 </div>
                             </div>
                             <hr>
                             <div class="summary-item d-flex justify-content-between fw-bold fs-5">
                                 <span>Total a pagar:</span>
-                                <span id="totalPrice" class="text-primary">S/25.00</span>
+                                <span id="totalPrice" class="text-primary"> </span>
                             </div>
                             <button id="confirmButton" class="btn btn-primary w-100 mt-4 py-2" onclick="validateForm()">
                                 <i class="bi bi-lock-fill"></i> Confirmar y realizar pago

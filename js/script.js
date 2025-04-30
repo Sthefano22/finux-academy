@@ -2,9 +2,7 @@
 // FUNCIONES GENERALES
 // ==============================================
 
-/**
- * Incluye componentes HTML (header, footer, etc.)
- */
+/* Incluye componentes HTML (header, footer, etc.) */
 function includeHTML() {
     const includes = document.querySelectorAll("[data-include]");
     includes.forEach((element) => {
@@ -29,9 +27,7 @@ function includeHTML() {
     });
 }
 
-/**
- * Inicializa componentes de Bootstrap (tooltips, popovers, etc.)
- */
+/* Inicializa componentes de Bootstrap (tooltips, popovers, etc.) */
 function initBootstrapComponents() {
     const tooltipTriggerList = [].slice.call(
         document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -48,9 +44,7 @@ function initBootstrapComponents() {
     );
 }
 
-/**
- * Muestra un mensaje de alerta en pantalla
- */
+/* Muestra un mensaje de alerta en pantalla */
 function showMessage(type, message) {
     const alertContainer = document.createElement("div");
     alertContainer.className = `alert alert-${type} mt-3`;
@@ -62,9 +56,7 @@ function showMessage(type, message) {
     setTimeout(() => alertContainer.remove(), 5000);
 }
 
-/**
- * Cambia el estado de un botón (deshabilitar, spinner, restaurar texto)
- */
+/* Cambia el estado de un botón (deshabilitar, spinner, restaurar texto) */
 function toggleButtonState(button, isLoading, loadingText = "Procesando...") {
     if (isLoading) {
         button.disabled = true;
@@ -76,21 +68,19 @@ function toggleButtonState(button, isLoading, loadingText = "Procesando...") {
 }
 
 // ==============================================
-// VALIDACIONES
+// FUNCIONES PARA EL FORMULARIO DE PAGO
 // ==============================================
 
-/**
- * Valida los datos del formulario de pago
- */
+/* Valida los datos del formulario de pago */
 function validateForm() {
-    const form = document.getElementById('checkoutForm');
+    const form = document.getElementById("checkoutForm");
     if (form.checkValidity()) {
         // Mostrar el modal si el formulario es válido
-        const modal = new bootstrap.Modal(document.getElementById('receiptModal'));
+        const modal = new bootstrap.Modal(document.getElementById("receiptModal"));
         modal.show();
     } else {
         // Si no es válido, mostrar errores
-        form.classList.add('was-validated');
+        form.classList.add("was-validated");
     }
 }
 
@@ -107,22 +97,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function submitPayment() {
-    const receiptForm = document.getElementById('receiptForm');
-    if (receiptForm.checkValidity()) {
-        alert("¡Comprobante enviado con éxito!");
-        // Aquí puedes manejar el envío real a un servidor si lo deseas
-    } else {
-        receiptForm.classList.add('was-validated');
+    // Validar el formulario del comprobante
+    const receiptForm = document.getElementById("receiptForm");
+    if (!receiptForm.checkValidity()) {
+        receiptForm.classList.add("was-validated");
+        return;
     }
+
+    // Simular el envío del comprobante (puedes reemplazar esto con una llamada al servidor)
+    alert("Comprobante enviado con éxito.");
+
+    // Cerrar el modal
+    const receiptModal = bootstrap.Modal.getInstance(document.getElementById("receiptModal"));
+    receiptModal.hide();
+
+    // Reiniciar el formulario del comprobante
+    receiptForm.reset();
+    receiptForm.classList.remove("was-validated");
 }
 
 // ==============================================
 // SISTEMA DE PAGOS
 // ==============================================
 
-/**
- * Procesa el pago de forma segura
- */
+/* Procesa el pago de forma segura */
 async function processPayment() {
     try {
         // Capturar datos del formulario
@@ -131,8 +129,6 @@ async function processPayment() {
             lastName: document.getElementById("lastName").value.trim(),
             email: document.getElementById("email").value.trim(),
             phone: document.getElementById("phone").value.trim(),
-            university: document.getElementById("university").value.trim(),
-            course: document.getElementById("course").value.trim(),
             packageName: document.getElementById("packageName").textContent.trim(),
             priceDisplay: document.getElementById("totalPrice").textContent.trim(),
             paymentMethod: document.querySelector('input[name="paymentMethod"]:checked')?.value,
@@ -140,48 +136,19 @@ async function processPayment() {
 
         // Convertir y validar el precio
         formData.amount = parseFloat(formData.priceDisplay.replace(/[^\d.]/g, ""));
-        const errors = validatePaymentForm(formData);
-
-        if (errors.length > 0) {
-            throw new Error(errors.join("\n"));
+        if (isNaN(formData.amount) || formData.amount <= 0) {
+            throw new Error("El monto total no es válido.");
         }
 
         // Mostrar estado de carga
         const submitBtn = document.querySelector('#checkoutForm button[type="submit"]');
         toggleButtonState(submitBtn, true, "Procesando pago...");
 
-        // Enviar datos al servidor
-        const response = await fetch(`${API_BASE_URL}/pagos`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${AUTH_TOKEN}`,
-            },
-            body: JSON.stringify({
-                customer: {
-                    firstName: formData.firstName,
-                    lastName: formData.lastName,
-                    email: formData.email,
-                    phone: formData.phone,
-                },
-                order: {
-                    university: formData.university,
-                    course: formData.course,
-                    package: formData.packageName,
-                    amount: formData.amount,
-                    currency: "PEN",
-                },
-                paymentMethod: formData.paymentMethod,
-            }),
-        });
+        // Simular envío al servidor (puedes reemplazar esto con una llamada real)
+        await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || "Error en el servidor.");
-        }
-
-        const result = await response.json();
-        showMessage("success", `¡Pago exitoso! ID de transacción: ${result.transactionId}`);
+        // Mostrar mensaje de éxito
+        showMessage("success", "¡Pago procesado con éxito!");
         document.getElementById("checkoutForm").reset();
     } catch (error) {
         console.error("Error en el pago:", error);
@@ -190,6 +157,40 @@ async function processPayment() {
         const submitBtn = document.querySelector('#checkoutForm button[type="submit"]');
         if (submitBtn) toggleButtonState(submitBtn, false);
     }
+}
+
+// ==============================================
+// FUNCIONES PARA EL RESUMEN DE COMPRA
+// ==============================================
+
+// Función para obtener parámetros de la URL
+function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        package: params.get("package"),
+        price: params.get("price"),
+        regular: params.get("regular"),
+        discount: params.get("discount"),
+    };
+}
+
+// Función para actualizar el resumen de compra
+function updateSummaryFromParams() {
+    const { package, price, regular, discount } = getQueryParams();
+
+    // Validar que todos los parámetros estén presentes
+    if (!package || !price || !regular || !discount) {
+        alert("Por favor selecciona un paquete antes de continuar.");
+        window.location.href = "packages.html"; // Redirige a la página de paquetes si faltan parámetros
+        return;
+    }
+
+    // Actualizar los valores en el resumen de compra
+    document.getElementById("packageName").textContent = package.replace(/_/g, " ").toUpperCase();
+    document.getElementById("regularPrice").textContent = `S/${parseFloat(regular).toFixed(2)}`;
+    document.getElementById("discount").textContent = `-S/${parseFloat(discount).toFixed(2)}`;
+    document.getElementById("finalPrice").textContent = `S/${parseFloat(price).toFixed(2)}`;
+    document.getElementById("totalPrice").textContent = `S/${parseFloat(price).toFixed(2)}`;
 }
 
 // ==============================================
@@ -202,6 +203,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Inicializar componentes de Bootstrap
     initBootstrapComponents();
+
+    // Verificar si estamos en la página de checkout antes de actualizar el resumen
+    if (window.location.pathname.includes("checkout.html")) {
+        // Actualizar el resumen de compra desde los parámetros de la URL
+        updateSummaryFromParams();
+    }
 
     // Configurar formulario de pago
     const checkoutForm = document.getElementById("checkoutForm");
