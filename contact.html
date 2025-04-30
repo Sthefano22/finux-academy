@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Finux Academy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="css/estilos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div data-include="header"></div>
+
+    <!-- Contact Hero -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h1 class="display-4 fw-bold mb-3">CONTÁCTANOS</h1>
+                    <p class="lead">Estamos aquí para ayudarte en tu camino académico</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card contact-info-card text-center p-4 shadow-sm">
+                        <i class="bi bi-envelope-fill contact-icon mb-3" style="font-size: 2rem; color: #3498db;"></i>
+                        <h4>Correo Electrónico</h4>
+                        <p class="features-text">Envíanos un mensaje y te responderemos lo antes posible</p>
+                        <a href="mailto:finuxasesorias@gmail.com" class="btn btn-outline-primary">finuxasesorias@gmail.com</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card contact-info-card text-center p-4 shadow-sm">
+                        <i class="bi bi-whatsapp contact-icon mb-3" style="font-size: 2rem; color: #25D366;"></i>
+                        <h4>WhatsApp</h4>
+                        <p class="features-text">Chatea directamente con nuestro equipo de asesores</p>
+                        <a href="https://wa.me/51947337085" class="btn btn-outline-success">+51 947 337 085</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card contact-info-card text-center p-4 shadow-sm">
+                        <i class="bi bi-clock-fill contact-icon mb-3" style="font-size: 2rem; color: #f39c12;"></i>
+                        <h4>Horario de Atención</h4>
+                        <p>Lunes a viernes: 8am - 12pm / 1pm - 8pm<br>Sábados: 8am - 12pm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body p-5">
+                            <h3 class="text-center mb-4">Envíanos un mensaje</h3>
+                            <form id="contactForm" action="https://formspree.io/f/finuxasesorias@gmail.com" method="POST">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Nombre completo</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Correo electrónico</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="subject" class="form-label">Asunto</label>
+                                        <select class="form-select" id="subject" name="subject" required>
+                                            <option value="" selected disabled>Selecciona un asunto</option>
+                                            <option value="Consulta general">Consulta general</option>
+                                            <option value="Información sobre asesorías">Información sobre asesorías</option>
+                                            <option value="Soporte técnico">Soporte técnico</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Mensaje</label>
+                                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary mt-3">Enviar Mensaje</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h3 class="mb-4">Síguenos en redes sociales</h3>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://facebook.com/FINUXAcademy" class="btn btn-outline-primary btn-lg rounded-circle">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://wa.me/51947337085" class="btn btn-outline-success btn-lg rounded-circle">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="mailto:finuxasesorias@gmail.com" class="btn btn-outline-danger btn-lg rounded-circle">
+                            <i class="bi bi-envelope-fill"></i>
+                        </a>
+                        <a href="https://instagram.com/FINUXAcademy" class="btn btn-outline-warning btn-lg rounded-circle">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

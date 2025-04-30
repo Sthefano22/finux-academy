@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programas - Finux Academy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="css/estilos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div data-include="header"></div>
+
+    <!-- Packages Hero -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h1 class="display-4 fw-bold mb-3">NUESTROS PROGRAMAS DE ASESORÍA</h1>
+                    <p class="lead">Elige el programa que mejor se adapte a tí</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Tabs -->
+    <section class="py-5">
+        <div class="container">
+            <ul class="nav nav-tabs package-tabs justify-content-center mb-5" id="packageTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="individual-tab" data-bs-toggle="tab" data-bs-target="#individual" type="button" role="tab">Horas Individuales</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="packages-tab" data-bs-toggle="tab" data-bs-target="#packages" type="button" role="tab">Programas</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="packageTabsContent">
+                <!-- Individual Hours Tab -->
+                <div class="tab-pane fade show active" id="individual" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header basic-header">
+                                    <h3>1 HORA</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/38</div>
+                                    <div class="price">S/25</div>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> Asesoría personalizada de 60 minutos</li>
+                                        <li><i class="bi bi-check-circle"></i> Revisión detallada de tu trabajo</li>
+                                        <li><i class="bi bi-check-circle"></i> Corrección de estilo y estructura</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=1hora" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header pro-header">
+                                    <h3>2 HORAS</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/70</div>
+                                    <div class="price">S/46</div>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 2 horas de asesoría personalizada</li>
+                                        <li><i class="bi bi-check-circle"></i> Ideal para trabajos extensos</li>
+                                        <li><i class="bi bi-check-circle"></i> Revisión completa y sugerencias</li>
+                                        <li><i class="bi bi-check-circle"></i> Ahorras S/24</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=2horas" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header premium-header">
+                                    <h3>3 HORAS</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/105</div>
+                                    <div class="price">S/72</div>
+                                    <span class="discount-badge text-primary">PROMO DEL MES</span>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 3 horas de asesoría personalizada</li>
+                                        <li><i class="bi bi-check-circle"></i> Ideal para todo el ciclo</li>
+                                        <li><i class="bi bi-check-circle"></i> Revisión completa y seguimiento</li>
+                                        <li><i class="bi bi-check-circle"></i> Ahorras S/33</li>
+                                        <li><i class="bi bi-check-circle"></i> Acceso a sorteo mensual</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=3horas" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Combos Section -->
+                    <div class="row mt-5">
+                        <div class="col text-center">
+                            <h3 class="mb-4">Combos con Turnitin+IA</h3>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header basic-header">
+                                    <h3>COMBO 1</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/50</div>
+                                    <div class="price">S/39</div>                 
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 1 hora de asesoría</li>
+                                        <li><i class="bi bi-check-circle"></i> Reporte Turnitin+IA</li>
+                                        <li><i class="bi bi-check-circle"></i> Porcentaje de plagio</li>
+                                        <li><i class="bi bi-check-circle"></i> Porcentaje de uso de IA</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=combo1" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header pro-header">
+                                    <h3>COMBO 2</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/85</div>
+                                    <div class="price">S/59</div>                           
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 2 horas de asesoría</li>
+                                        <li><i class="bi bi-check-circle"></i> Reporte Turnitin+IA</li>
+                                        <li><i class="bi bi-check-circle"></i> Análisis completo</li>
+                                        <li><i class="bi bi-check-circle"></i> Sugerencias de mejora</li>
+                                        <li><i class="bi bi-check-circle"></i> Ahorras S/26</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=combo2" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header premium-header">
+                                    <h3>COMBO 3</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/120</div>
+                                    <div class="price">S/85</div>                                  
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 3 horas de asesoría</li>
+                                        <li><i class="bi bi-check-circle"></i> Reporte Turnitin+IA</li>
+                                        <li><i class="bi bi-check-circle"></i> Revisión exhaustiva</li>
+                                        <li><i class="bi bi-check-circle"></i> Seguimiento continuo</li>
+                                        <li><i class="bi bi-check-circle"></i> Ahorras S/35</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=combo3" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Packages Tab -->
+                <div class="tab-pane fade" id="packages" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header basic-header">
+                                    <h3>PACK BÁSICO</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/150</div>
+                                    <div class="price">S/120</div>                                   
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 5 horas de asesoría</li>
+                                        <li><i class="bi bi-check-circle"></i> 15 min asesoría asincrónica gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> Apoyo hasta semana 8</li>
+                                        <li><i class="bi bi-check-circle"></i> 10% descuento en empresas convenio</li>
+                                        <li><i class="bi bi-check-circle"></i> Ideal para cursos cortos</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=basico" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header pro-header">
+                                    <h3>PACK PRO</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/280</div>
+                                    <div class="price">S/200</div>                    
+                                    <span class="discount-badge text-success">35% DSCTO</span>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 8 horas de asesoría</li>
+                                        <li><i class="bi bi-check-circle"></i> 25 min asesoría sincrónica gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> 20% dscto en asesorías de 2 horas</li>
+                                        <li><i class="bi bi-check-circle"></i> 1 bono de S/10 para 1 hora</li>
+                                        <li><i class="bi bi-check-circle"></i> 15% dscto en empresas convenio</li>
+                                        <li><i class="bi bi-check-circle"></i> Apoyo hasta semana 8</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=pro" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card package-card h-100">
+                                <div class="package-header premium-header">
+                                    <h3>PACK PREMIUM</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/420</div>
+                                    <div class="price">S/280</div>                            
+                                    <span class="discount-badge text-primary">25% DSCTO</span>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 12 horas de asesoría</li>
+                                        <li><i class="bi bi-check-circle"></i> 35 min asesoría sincrónica gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> 25% dscto en asesorías de 2 horas</li>
+                                        <li><i class="bi bi-check-circle"></i> 2 bonos de S/10 para 1 hora</li>
+                                        <li><i class="bi bi-check-circle"></i> 20% dscto en empresas convenio</li>
+                                        <li><i class="bi bi-check-circle"></i> 1 reporte TRIA gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> Apoyo hasta semana 16</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=premium" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card package-card h-100">
+                                <div class="package-header vip-header">
+                                    <h3>PACK VIP</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/600</div>
+                                    <div class="price">S/390</div>                               
+                                    <span class="discount-badge text-dark">35% DSCTO</span>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 18 horas de asesoría</li>
+                                        <li><i class="bi bi-check-circle"></i> 45 min asesoría sincrónica gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> 35% dscto en asesorías de 2 horas</li>
+                                        <li><i class="bi bi-check-circle"></i> 4 bonos de S/10 para 1 hora</li>
+                                        <li><i class="bi bi-check-circle"></i> 30% dscto en empresas convenio</li>
+                                        <li><i class="bi bi-check-circle"></i> 1 mes Disney+ o HBO MAX gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> 2 reportes TRIA gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> Apoyo hasta semana 16</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=vip" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card package-card h-100">
+                                <div class="package-header super-vip-header">
+                                    <h3>PACK SÚPER VIP</h3>
+                                    <div class="old-price" style="font-size: 1.35rem;">Antes: S/840</div>
+                                    <div class="price">S/490</div>           
+                                    <span class="discount-badge text-danger">40% DSCTO</span>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check-circle"></i> 24 horas de asesoría</li>
+                                        <li><i class="bi bi-check-circle"></i> 1 hora asesoría sincrónica gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> 40% dscto en asesorías de 2 horas</li>
+                                        <li><i class="bi bi-check-circle"></i> 6 bonos de S/10 para 1 hora</li>
+                                        <li><i class="bi bi-check-circle"></i> 45% dscto en empresas convenio</li>
+                                        <li><i class="bi bi-check-circle"></i> 2 meses Disney+ o HBO MAX gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> 3 reportes TRIA gratis</li>
+                                        <li><i class="bi bi-check-circle"></i> Apoyo hasta semana 16</li>
+                                        <li><i class="bi bi-check-circle"></i> Beneficios exclusivos</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-white text-center">
+                                    <a href="checkout.html?package=supervip" class="btn btn-primary w-100">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Benefits -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h2 class="fw-bold">BENEFICIOS DE NUESTROS PROGRAMAS</h2>
+                    <p class="lead">Te ayudamos durante todo el ciclo académico</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-mortarboard fs-1 text-primary mb-3"></i>
+                            <h5>Clase introductoria</h5>
+                            <p class="features-text">Recibe una clase inicial sobre el curso que llevarás (TEIT, Argumentación o Investigación Académica).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-file-earmark-text fs-1 text-primary mb-3"></i>
+                            <h5>Desarrollo paso a paso</h5>
+                            <p class="features-text">Trabajaremos juntos en tu ensayo o monografía según las horas de sesión adquiridas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-trophy fs-1 text-primary mb-3"></i>
+                            <h5>Premios académicos</h5>
+                            <p class="features-text">Al finalizar el curso con buenas calificaciones, podrás competir por premios académicos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-graph-up fs-1 text-primary mb-3"></i>
+                            <h5>Mejora tu promedio</h5>
+                            <p class="features-text">Nuestro apoyo te ayudará a asegurar excelentes calificaciones y elevar tu promedio académico.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-gift fs-1 text-primary mb-3"></i>
+                            <h5>Beneficios exclusivos</h5>
+                            <p class="features-text">Accede a bonos, regalos y beneficios exclusivos según el paquete que elijas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Convenios Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <!-- Título de la sección -->
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h2>NUESTROS CONVENIOS</h2>
+                    <p class="lead">Colaboramos con empresas líderes para ofrecerte los mejores beneficios</p>
+                </div>
+            </div>
+
+            <!-- Convenios principales -->
+            <div class="row g-4">
+                <!-- IMPETUS LIFE -->
+                <div class="col-md-4 text-center">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <img src="img/Impetus.png" alt="Impetus Life" class="img-fluid mb-3" style="max-height: 120px;">
+                            <h5 class="fw-bold">IMPETUS LIFE</h5>
+                            <p class="features-text">Somos una academia especializada en desarrollo personal y emprendimiento.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- DIBUIMPORT -->
+                <div class="col-md-4 text-center">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <img src="img/Dibu.png" alt="Dibuimport" class="img-fluid mb-3" style="max-height: 120px;">
+                            <h5 class="fw-bold">DIBUIMPORT</h5>
+                            <p class="features-text">Los mejores audífonos, productos de tecnología/hogar y más.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- CONNECTIFY -->
+                <div class="col-md-4 text-center">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <img src="img/Connectify.png" alt="Connectify" class="img-fluid mb-3" style="max-height: 120px;">
+                            <h5 class="fw-bold">CONNECTIFY</h5>
+                            <p class="features-text">Te ayudamos a crecer en likes/seguidores en todas tus redes sociales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Convenios adicionales -->
+            <div class="row g-4 mt-4">
+                <!-- STEAMFAST -->
+                <div class="col-md-6 text-center">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <img src="img/Stream.png" alt="Steamfast" class="img-fluid mb-3" style="max-height: 120px;">
+                            <h5 class="fw-bold">STREAMFAST</h5>
+                            <p class="features-text">Te ofrecemos los mejores servicios de streaming. Disfruta de tus series y películas favoritas en un solo lugar.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- SOH CORPORATION -->
+                <div class="col-md-6 text-center">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <img src="img/S.O.H.png" alt="SOH Corporation" class="img-fluid mb-3" style="max-height: 120px;">
+                            <h5 class="fw-bold">SOH CORPORATION</h5>
+                            <p class="features-text">Somos un corporativo en las diferentes industrias como la educación, entretenimiento e importaciones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Excellence Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3>Premiamos tu excelencia académica</h3>
+                    <p class="mb-md-0">Obtén promedio +17 y accede a constancias, descuentos, premios PUCP y cuentas streaming de regalo.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="contact.html" class="btn btn-light btn-lg">Saber Más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
