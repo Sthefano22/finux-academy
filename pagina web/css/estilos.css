@@ -1,0 +1,483 @@
+:root {
+    --primary-color: #0080ff;
+    --secondary-color: #37d9ee;
+    --success-color: #1cc88a;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+}
+  
+  /* Estilos generales */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+
+  .highlight-title {
+    color: #0746ff;
+    font-weight: bold;
+}
+
+  /* Encabezado */
+  header {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}  
+  .navbar-brand img {
+    max-height: 80px;
+    transition: transform 0.3s ease;
+}  
+  .navbar-brand img:hover {
+    transform: scale(1.1);
+}
+  .nav-link {
+    position: relative;
+    display: inline-block;
+    color: #000;
+    text-decoration: none; 
+    font-weight: bold; 
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px; 
+    background-color: #0080ff; 
+    transition: width 0.3s ease; 
+}
+  .nav-link:hover::after {
+    width: 100%; 
+}
+
+  /*hero*/
+  .hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/hero-bg.jpg') no-repeat center center/cover;
+    background-attachment:local;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: #ffffff;
+}
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25); 
+    z-index: -1;
+    transition: opacity 0.5s ease;
+}
+
+  /* About hero */
+  .about-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/redaccion.jpg') no-repeat center center/cover;
+    color: #ffffff;
+}
+
+  /* Service hero */
+  .service-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/redaccion-1.JPG') no-repeat center center/cover;
+    color: #ffffff;
+}
+
+  .about-hero::before,
+  .service-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.0);
+    z-index: -1;
+    transition: opacity 0.5s ease;
+}
+
+  /* Team Section */
+  .team-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+  .team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+  .team-img-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 50%; 
+}
+
+  .team-img {
+    max-width: 350%; 
+    height: auto; 
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+
+  .team-card:hover .team-img {
+    transform: scale(1.1);
+}
+
+  .card-body h5 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+  .card-body p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+  /* Tarjetas */
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+  .card:hover {
+    transform: translateY(-5px);
+}
+  
+  .package-card {
+    border: none;
+}
+  .package-header {
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+  .basic-header,
+  .pro-header,
+  .premium-header,
+  .vip-header,
+  .super-vip-header {
+    background-color: #04000085;
+}
+  
+  /* Testimonios y equipos */
+  .testimonial-card {
+    height: 100%;
+}
+  .team-card {
+    overflow: hidden;
+}
+  .mission-card {
+    border-left: 5px solid #04000085;
+}
+  
+  /* Íconos */
+  .feature-icon,
+  .value-icon,
+  .service-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+  
+  /* Testimonios */
+  .testimonial-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+  
+  /* Insignias de curso */
+  .course-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: white;
+}
+  .teit-badge { background-color: #3498db; }
+  .argumentacion-badge { background-color: #2ecc71; }
+  .investigacion-badge { background-color: #9b59b6; }
+  .derecho-badge { background-color: #e67e22; }
+  
+  /* Proceso */
+  .process-step {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 40px;
+}
+  .process-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+  
+  /* Línea de tiempo */
+  .timeline {
+    position: relative;
+    padding-left: 50px;
+}
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--secondary-color);
+}
+  .timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    border: 4px solid white;
+}
+  
+  /* Botones */
+  .btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+}
+  .btn-outline-primary {
+    color: #1e1b1b;
+    border-color: #ff0000;
+}
+  .btn-submit,
+  .btn-confirm {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    border: none;
+}
+  .btn-submit:hover,
+  .btn-confirm:hover {
+    background-color: #2980b9;
+    color: white;
+}
+  .btn-custom {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff; 
+}
+  .btn-custom:hover {
+    background-color: #2980b9;
+    border-color: #2980b9; 
+}
+  .btn-outline-light {
+      --bs-btn-color: #ffffff; 
+      --bs-btn-border-color: #0b5ed7; 
+      --bs-btn-hover-color: #ffffff; 
+      --bs-btn-hover-bg: #0b5ed7; 
+      --bs-btn-hover-border-color: #0b5ed7; 
+      --bs-btn-focus-shadow-rgb: 4, 107, 210; 
+}
+  .btn-outline-light {
+      color: #ffffff; 
+      border-color: #37d9ee; 
+      background-color: #37d9ee; 
+      transition: all 0.3s ease; 
+}
+  .btn-outline-light:hover {
+      color: #ffffff; 
+      background-color: #046bd2; 
+      border-color: #046bd2; 
+}
+  
+  /* Formularios */
+  .form-control,
+  .form-select {
+    border-radius: 8px;
+    padding: 12px;
+}
+  .payment-method {
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+  .payment-method:hover {
+    border-color: var(--secondary-color);
+}
+  .payment-method.selected {
+    border-color: var(--secondary-color);
+    background-color: rgba(52, 152, 219, 0.05);
+}
+  .payment-logo {
+    height: 30px;
+    margin-right: 10px;
+}
+  
+  /* Secciones */
+  .bg-light {
+    background-color: #37d9ee !important;
+}
+  .bg-primary {
+    background-color: var(--primary-color) !important;
+}
+  .bg-dark {
+    background-color: #0f0f0f !important;
+}
+  
+  /* Textos */
+  .custom-text-large {
+    font-size: 1.15rem; 
+}
+  .text-primary {
+    color: var(--primary-color) !important;
+    font-size: xx-large;
+}
+  .text-secondary {
+    color: var(--secondary-color) !important;
+}
+  .stats-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+  .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+  .old-price {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+  .discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: white;
+}
+  
+  /* Listas */
+  .feature-list {
+    list-style-type: none;
+    padding: 0;
+}
+  .feature-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+  .feature-list li:last-child {
+    border-bottom: none;
+}
+  .feature-list li i {
+    margin-right: 10px;
+    color: #3498db;
+}
+  .features-text {
+    text-align: justify; 
+    font-size: 1.1rem; 
+    line-height: 1.8; 
+}
+  .list-group-item {
+    font-size: 1.25rem; 
+    line-height: 1.6;
+}
+  
+  /* Responsive */
+  @media (max-width: 767.98px) {
+    .testimonial-scroll {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 20px;
+    }
+    .testimonial-scroll .card {
+      display: inline-block;
+      width: 300px;
+      margin-right: 15px;
+      white-space: normal;
+      vertical-align: top;
+    }
+}
+  
+  @media (min-width: 768px) {
+    .testimonial-scroll {
+      overflow-x: visible;
+      white-space: normal;
+    }
+    .testimonial-scroll .card {
+      display: block;
+      width: 100%;
+      margin-right: 0;
+    }
+}
+
+  /* Animación */
+  @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-section {
+        min-height: 50vh;
+        background-attachment: scroll;
+    }
+    
+    .hero-content {
+        padding: 1rem;
+    }
+}
+
+
+  @media (min-height: 800px) {
+    .about-hero { height: 65vh; }
+    .service-hero { height: 70vh; }
+}
+
+  @media (max-height: 600px) {
+    .about-hero,
+    .service-hero {
+        height: auto;
+        min-height: 400px;
+    }
+}
