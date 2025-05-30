@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Finux Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"/>
+  <link href="css/estilos.css" rel="stylesheet"/>
+</head>
+<body>
+  <!-- Header -->
+  <div data-include="header"></div>
+
+  <!-- Hero -->
+  <section class="py-5 bg-primary text-white text-center">
+    <div class="container">
+      <h1 class="display-5 fw-bold mb-3">Finaliza tu compra</h1>
+      <p class="lead">Completa tus datos y selecciona tu método de pago para asegurar tu asesoría</p>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Información personal -->
+        <div class="col-lg-8">
+          <div class="card checkout-card shadow-sm">
+            <div class="card-body">
+              <h4 class="mb-4 fw-bold text-primary">Información personal</h4>
+              <form id="checkoutForm" action="conexion.php" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <input type="hidden" name="package" id="hiddenPackage">
+                <input type="hidden" name="amount" id="hiddenAmount">
+                <div class="row g-3">
+                  <!-- Nombres -->
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label">Nombres <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required 
+                           title="Por favor ingresa tus nombres"/>
+                    <div class="invalid-feedback">Por favor ingresa tus nombres</div>
+                  </div>
+                  <!-- Apellidos -->
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Apellidos <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required
+                           title="Por favor ingresa tus apellidos"/>
+                    <div class="invalid-feedback">Por favor ingresa tus apellidos</div>
+                  </div>
+                  <!-- Correo -->
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Correo electrónico <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" required
+                           title="Por favor ingresa un correo válido"/>
+                    <div class="invalid-feedback">Por favor ingresa un correo válido</div>
+                  </div>
+                  <!-- Teléfono -->
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label">Teléfono <span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required
+                           title="Por favor ingresa tu número telefónico"/>
+                    <div class="invalid-feedback">Por favor ingresa tu número telefónico</div>
+                  </div>
+                  <!-- Universidad -->
+                  <div class="col-12">
+                    <label for="university" class="form-label">Universidad o Instituto</label>
+                    <input type="text" class="form-control" id="university" name="university" />
+                  </div>
+                  <!-- Curso -->
+                  <div class="col-12">
+                    <label for="subject" class="form-label">Curso que necesitas asesoría <span class="text-danger">*</span></label>
+                    <select class="form-select" id="subject" name="subject" required
+                            title="Por favor selecciona un curso">
+                      <option value="" disabled selected>Selecciona un curso</option>
+                      <option value="redaccion_academica">Redacción Académica</option>
+                      <option value="metodologia_investigacion">Metodología de la Investigación</option>
+                      <option value="argumentacion">Argumentación</option>
+                      <option value="tecnicas_estudio">Técnicas de Estudio</option>
+                      <option value="gestion_proyectos">Gestión de Proyectos</option>
+                      <option value="estadistica_basica">Estadística Básica</option>
+                      <option value="programacion_basica">Programación Básica</option>
+                      <option value="ingles_academico">Inglés Académico</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor selecciona un curso</div>
+                  </div>
+                </div>
+
+                <!-- Método de pago -->
+                <h4 class="mt-5 mb-4 fw-bold text-primary">Método de pago</h4>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="payment-method p-3 border rounded d-flex align-items-center" id="yapeContainer">
+                      <input class="form-check-input me-2" type="radio" name="paymentMethod" id="yapeMethod" value="yape" required
+                             title="Por favor selecciona un método de pago"/>
+                      <label class="form-check-label d-flex align-items-center w-100" for="yapeMethod">
+                        <img src="img/yape.png" alt="Yape" class="payment-logo me-2" style="height: 32px;" />
+                        YAPE
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Detalles Yape -->
+                <div id="yapeDetails" class="mt-4" style="display: none;">
+                  <h5 class="mb-3 fw-bold text-primary">Detalles del pago con Yape</h5>
+                  <div class="alert alert-info">
+                    <strong>Instrucciones:</strong>
+                    <ol class="mt-2">
+                      <li>Realiza el pago a través del QR o número Yape</li>
+                      <li>Captura el comprobante de pago</li>
+                      <li>Haz clic en "Confirmar y realizar pago"</li>
+                      <li>Sube tu comprobante en el siguiente paso</li>
+                    </ol>
+                  </div>
+                  <div class="text-center mb-4">
+                    <img src="img/QR-YAPE.jpg" alt="QR de Yape" class="img-fluid mb-2" style="max-width: 500px;" />
+                    <p class="text-muted">Escanea este código con la app Yape</p>
+                  </div>
+                  <div class="alert alert-primary">
+                    <strong>Número Yape:</strong> 904 931 423 <br />
+                    <strong>Nombre:</strong> Salvador Orbegoso Herrera <br />
+                    <strong>Monto:</strong> S/.
+                  </div>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="receiptModal" tabindex="-1">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Sube tu comprobante Yape</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="mb-3">
+                          <label for="receiptFile" class="form-label">Comprobante (imagen) <span class="text-danger">*</span></label>
+                          <input type="file" class="form-control" id="receiptFile" name="receipt" accept="image/*" required
+                                 title="Por favor sube tu comprobante de pago"/>
+                          <div class="invalid-feedback">Por favor sube tu comprobante de pago.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="transactionCode" class="form-label">Código de transacción (opcional)</label>
+                          <input type="text" class="form-control" id="transactionCode" name="transactionCode" />
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Enviar comprobante</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div id="alert-container"></div>
+          </div>
+        </div>
+
+        <!-- Resumen -->
+        <div class="col-lg-4">
+          <div class="card checkout-card shadow-sm">
+            <div class="card-body">
+              <h4 class="mb-4 fw-bold text-primary">Resumen de compra</h4>
+              <div id="packageSummary">
+                <div class="summary-item d-flex justify-content-between">
+                  <span>Paquete:</span>
+                  <span id="packageName" class="fw-bold">Asesoría individual</span>
+                </div>
+                <div class="summary-item d-flex justify-content-between">
+                  <span>Precio regular:</span>
+                  <span id="regularPrice" class="text-decoration-line-through text-muted">S/. 70.00</span>
+                </div>
+                <div class="summary-item d-flex justify-content-between">
+                  <span>Descuento:</span>
+                  <span id="discount" class="text-success">S/. 20.00</span>
+                </div>
+                <div class="summary-item d-flex justify-content-between">
+                  <span>Precio final:</span>
+                  <span id="finalPrice" class="fw-bold">S/. 50.00</span>
+                </div>
+              </div>
+              <hr />
+              <div class="summary-item d-flex justify-content-between fw-bold fs-5">
+                <span>Total a pagar:</span>
+                <span id="totalPrice" class="fw-bold">S/. 50.00</span>
+              </div>
+              <button id="confirmButton" class="btn btn-primary w-100 mt-4 py-2" data-bs-toggle="modal" data-bs-target="#receiptModal">
+                <i class="bi bi-lock-fill"></i> Confirmar y realizar pago
+              </button>
+              <div class="alert alert-warning mt-3 small">
+                Al confirmar, aceptas nuestros <a href="#">Términos y Condiciones</a> y <a href="#">Política de Privacidad</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp -->
+  <section class="py-4 bg-light">
+    <div class="container text-center">
+      <h5 class="fw-bold text-primary">¿Prefieres otro medio de pago?</h5>
+      <p>Si deseas realizar el pago con otro método, contáctanos directamente por WhatsApp.</p>
+      <a href="https://wa.me/51947337085" target="_blank" class="btn btn-success">
+        <i class="bi bi-whatsapp"></i> Contactar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div data-include="footer"></div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
