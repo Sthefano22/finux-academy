@@ -170,33 +170,47 @@
     background-color: #04000085;
 }
   
-  /* Estilo para las tarjetas de testimonios */
+  /* Estilo para las tarjetas de comentarios */
   .testimonial-card {
     border: none;
-    height: auto;
-    border-radius: 10px; /* Bordes redondeados */
-    overflow: hidden; /* Asegura que las imágenes no se salgan del contenedor */
-    background-color: #fff; /* Fondo blanco */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
   .testimonial-card:hover {
-    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-  /* Estilo para las imágenes */
+  /* Estilo para las imágenes de los comentarios */
   .testimonial-img {
-    width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-    height: auto; /* Mantiene la proporción original de la imagen */
-    object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortarla */
-    border-radius: 10px; /* Bordes redondeados */
-    transition: transform 0.3s ease; /* Animación suave */
+    width: 60px; /* Tamaño pequeño */
+    height: 60px; /* Tamaño pequeño */
+    border-radius: 50%; /* Hace la imagen redonda */
+    object-fit: cover; /* Asegura que la imagen no se deforme */
+    border: 2px solid #ddd; /* Opcional: borde alrededor de la imagen */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-  .testimonial-img:hover {
-    transform: scale(1.02);
+  /* Estilo para el texto dentro de las tarjetas */
+  .testimonial-card h5 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+  .testimonial-card small {
+    color: #888;
+}
+
+  .testimonial-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.5rem;
+    line-height: 1.5;
 }
   .team-card {
     overflow: hidden;
@@ -433,36 +447,14 @@
 }
   
   /* Responsive */
-  @media (max-width: 767.98px) {
-    .testimonial-scroll {
-      overflow-x: auto;
-      white-space: nowrap;
-      padding-bottom: 20px;
-    }
-    .testimonial-scroll .card {
-      display: inline-block;
-      width: 300px;
-      margin-right: 15px;
-      white-space: normal;
-      vertical-align: top;
-    }
-}
-  
-  @media (min-width: 768px) {
-    .testimonial-scroll {
-      overflow-x: visible;
-      white-space: normal;
-    }
-    .testimonial-scroll .card {
-      display: block;
-      width: 100%;
-      margin-right: 0;
-    }
-}
-
   @media (max-width: 768px) {
     .testimonial-img {
-      height: auto; /* Ajusta la altura automáticamente en pantallas pequeñas */
+        width: 50px;
+        height: 50px;
+    }
+
+    .testimonial-card p {
+        font-size: 0.85rem;
     }
 }
 

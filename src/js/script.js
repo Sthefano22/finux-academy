@@ -229,6 +229,7 @@ function getQueryParams() {
 function updateSummaryFromParams() {
     const { package, price, regular, discount } = getQueryParams();
 
+    // Validar que los parámetros estén presentes
     if (!package || !price) {
         showMessage("danger", "Por favor selecciona un paquete antes de continuar.");
         setTimeout(() => {
@@ -251,7 +252,7 @@ function updateSummaryFromParams() {
     if (discountElement) discountElement.textContent = discount ? `-S/${parseFloat(discount).toFixed(2)}` : "S/0.00";
     if (finalPriceElement) finalPriceElement.textContent = `S/${parseFloat(price).toFixed(2)}`;
     if (totalPriceElement) totalPriceElement.textContent = `S/${parseFloat(price).toFixed(2)}`;
-    
+
     // Actualizar campos ocultos
     if (hiddenPackageElement) hiddenPackageElement.value = package;
     if (hiddenAmountElement) hiddenAmountElement.value = price;
@@ -261,12 +262,16 @@ function updateSummaryFromParams() {
 // INICIALIZACIÓN
 // ==============================================
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     includeHTML();
     initBootstrapComponents();
     setupCustomValidation();
-    updateSummaryFromParams();
     setupPaymentMethodToggle();
+
+    // Ejecutar updateSummaryFromParams solo en checkout.html
+    if (window.location.pathname.includes("checkout.html")) {
+        updateSummaryFromParams();
+    }
 
     // Manejar envío del formulario
     const checkoutForm = document.getElementById("checkoutForm");
