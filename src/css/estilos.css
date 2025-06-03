@@ -62,7 +62,7 @@
 
   /*hero*/
   .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/hero-bg.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/inicio.jpg') no-repeat center center/cover;
     background-attachment:local;
     min-height: 60vh;
     display: flex;
@@ -84,14 +84,38 @@
 
   /* About hero */
   .about-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/redaccion.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/nosotros.jpg') no-repeat center center/cover;
     color: #ffffff;
 }
 
   /* Service hero */
   .service-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/redaccion-1.JPG') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/servicios.JPG') no-repeat center center/cover;
     color: #ffffff;
+}
+
+  /* Testimonial Hero Section */
+  .testimonial-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/testimonios.jpg') no-repeat center center/cover;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: #ffffff;
+}
+
+  .testimonial-hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+  .testimonial-hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
   .about-hero::before,
@@ -217,6 +241,26 @@
 }
   .mission-card {
     border-left: 5px solid #04000085;
+}
+
+  /* Estilo para el modal */
+  .modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+  .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+  .modal-title {
+    font-weight: bold;
+    color: #007bff;
+}
+
+  .modal-body {
+    padding: 20px;
 }
   
   /* Íconos */
@@ -346,6 +390,22 @@
       color: #ffffff; 
       background-color: #046bd2; 
       border-color: #046bd2; 
+}
+
+  /* Botón de confirmación */
+  #confirmButton {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+  #confirmButton:hover {
+    background-color: #0056b3;
+}
+
+  /* Resumen de compra */
+  #packageSummary .summary-item {
+    margin-bottom: 10px;
 }
   
   /* Formularios */
@@ -493,5 +553,15 @@
     .service-hero {
         height: auto;
         min-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-hero h1 {
+        font-size: 2rem;
+    }
+
+    .testimonial-hero p {
+        font-size: 1rem;
     }
 }

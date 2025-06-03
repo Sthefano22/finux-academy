@@ -23,8 +23,9 @@ try {
 } catch (PDOException $e) {
     echo json_encode([
         'success' => false,
-        'message' => 'Error al conectar con la base de datos: ' . $e->getMessage()
+        'message' => 'Error al conectar con la base de datos.'
     ]);
+    error_log("Error de conexión a la base de datos: " . $e->getMessage());
     exit;
 }
 
@@ -96,16 +97,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             )
         ");
         $stmt->execute([
-            ':first_name' => $_POST['firstName'],
-            ':last_name' => $_POST['lastName'],
-            ':email' => $_POST['email'],
-            ':phone' => $_POST['phone'],
-            ':university' => $_POST['university'] ?? null,
-            ':subject' => $_POST['subject'],
-            ':payment_method' => $_POST['paymentMethod'],
-            ':package' => $_POST['package'],
-            ':amount' => $_POST['amount'],
-            ':transaction_code' => $_POST['transactionCode'] ?? null,
+            ':first_name' => htmlspecialchars($_POST['firstName']),
+            ':last_name' => htmlspecialchars($_POST['lastName']),
+            ':email' => htmlspecialchars($_POST['email']),
+            ':phone' => htmlspecialchars($_POST['phone']),
+            ':university' => htmlspecialchars($_POST['university'] ?? null),
+            ':subject' => htmlspecialchars($_POST['subject']),
+            ':payment_method' => htmlspecialchars($_POST['paymentMethod']),
+            ':package' => htmlspecialchars($_POST['package']),
+            ':amount' => htmlspecialchars($_POST['amount']),
+            ':transaction_code' => htmlspecialchars($_POST['transactionCode'] ?? null),
             ':receipt_path' => $receiptPath
         ]);
 
@@ -117,8 +118,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'finuxacademy@gmail.com';
-            $mail->Password = 'rappi2501'; // Usa clave de aplicación si es Gmail
+            $mail->Username = getenv('SMTP_USER') ?: 'finuxacademy@gmail.com'; // Usa variable de entorno
+            $mail->Password = getenv('SMTP_PASS') ?: 'rappi2501'; // Usa variable de entorno
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
