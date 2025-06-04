@@ -16,8 +16,9 @@
 }
 
   .highlight-title {
-    color: #0746ff;
+    color: #007bff; /* Azul profesional */
     font-weight: bold;
+    text-transform: uppercase;
 }
 
   /* Encabezado */
@@ -128,6 +129,23 @@
     transition: opacity 0.5s ease;
 }
 
+  /* Redes Sociales Section */
+  .social-media-section {
+    background: linear-gradient(to right, #007bff, #00c851);
+    position: relative;
+}
+
+  .social-media-section h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+  .social-media-section p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
   /* Team Section */
   .team-card {
     border-radius: 10px;
@@ -168,6 +186,22 @@
     color: #555;
 }
 
+  /* Contact Cards */
+  .contact-card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+  .contact-card i {
+    font-size: 2.5rem;
+}
+
   /* Tarjetas */
   .card {
     border-radius: 10px;
@@ -195,28 +229,30 @@
 }
   
   /* Estilo para las tarjetas de comentarios */
+  .testimonial-section {
+    background: linear-gradient(135deg, #bff8ff, #bcf4ff);
+    padding: 50px 0;
+}
+
   .testimonial-card {
-    border: none;
+    background-color: #ffffff; /* Fondo blanco para las tarjetas */
+    border: 1px solid #dee2e6; /* Borde sutil */
     border-radius: 10px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
   .testimonial-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el cursor */
 }
 
-  /* Estilo para las imágenes de los comentarios */
   .testimonial-img {
-    width: 60px; /* Tamaño pequeño */
-    height: 60px; /* Tamaño pequeño */
-    border-radius: 50%; /* Hace la imagen redonda */
-    object-fit: cover; /* Asegura que la imagen no se deforme */
-    border: 2px solid #ddd; /* Opcional: borde alrededor de la imagen */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #007bff; /* Borde azul */
 }
 
   /* Estilo para el texto dentro de las tarjetas */
@@ -347,7 +383,7 @@
 }
   .btn-outline-primary {
     color: #1e1b1b;
-    border-color: #ff0000;
+    border-color: #0061f3;
 }
   .btn-submit,
   .btn-confirm {
@@ -455,6 +491,9 @@
 }
   .text-secondary {
     color: var(--secondary-color) !important;
+}
+  .text-warning i {
+    font-size: 1.2rem;
 }
   .stats-number {
     font-size: 3rem;
