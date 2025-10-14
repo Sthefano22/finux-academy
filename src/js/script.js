@@ -18,7 +18,7 @@ function includeHTML() {
             .then((html) => {
                 element.innerHTML = html;
                 element.removeAttribute("data-include");
-                includeHTML(); // Llama recursivamente para cargar componentes anidados
+                includeHTML(); 
             })
             .catch((error) => {
                 console.error("Error al cargar componente:", error);
@@ -67,6 +67,7 @@ function toggleButtonState(button, isLoading, loadingText = "Procesando...") {
     if (!button) return;
 
     if (isLoading) {
+        button.dataset.originalText = button.innerHTML;
         button.disabled = true;
         button.innerHTML = `<span class="spinner-border spinner-border-sm" role="status"></span> ${loadingText}`;
     } else {
@@ -86,6 +87,7 @@ function setupCustomValidation() {
         lastName: "Por favor ingresa tus apellidos",
         email: "Por favor ingresa un correo válido",
         phone: "Por favor ingresa tu número telefónico",
+        university: "Por favor selecciona tu universidad/instituto",
         subject: "Por favor selecciona un curso",
         receiptFile: "Por favor sube tu comprobante de pago",
         paymentMethod: "Por favor selecciona un método de pago",
@@ -93,31 +95,29 @@ function setupCustomValidation() {
     };
 
     document.querySelectorAll("[required]").forEach((element) => {
-        element.oninvalid = function (e) {
+        element.addEventListener("invalid", function (e) {
             e.preventDefault();
-            const message =
-                validationMessages[element.id] ||
-                validationMessages[element.name] ||
-                validationMessages.default;
-            element.setCustomValidity(message);
+            if (!element.classList.contains("is-invalid")) {
+                const message =
+                    validationMessages[element.id] ||
+                    validationMessages[element.name] ||
+                    validationMessages.default;
+                element.setCustomValidity(message);
 
-            const feedbackElement = element.nextElementSibling;
-            if (feedbackElement && feedbackElement.classList.contains("invalid-feedback")) {
-                feedbackElement.textContent = message;
+                const feedbackElement = element.nextElementSibling;
+                if (feedbackElement && feedbackElement.classList.contains("invalid-feedback")) {
+                    feedbackElement.textContent = message;
+                }
+
+                element.classList.add("is-invalid");
+                element.reportValidity();
             }
+        });
 
-            element.classList.add("is-invalid");
-            element.reportValidity();
-
-            setTimeout(() => {
-                element.setCustomValidity("");
-            }, 2000);
-        };
-
-        element.oninput = element.onchange = function () {
+        element.addEventListener("input", function () {
             element.setCustomValidity("");
             element.classList.remove("is-invalid");
-        };
+        });
     });
 }
 
@@ -139,6 +139,28 @@ function setupPaymentMethodToggle() {
     });
 }
 
+// Copia los datos del formulario principal al del comprobante
+function copyCheckoutDataToReceiptForm() {
+    const checkoutForm = document.getElementById("checkoutForm");
+    const receiptForm = document.getElementById("receiptForm");
+    if (!checkoutForm || !receiptForm) return;
+
+    const fields = [
+        "firstName", "lastName", "email", "phone", "university", "subject", "package", "amount", "paymentMethod"
+    ];
+    fields.forEach(field => {
+        let value = checkoutForm.querySelector(`[name="${field}"]`)?.value || "";
+        let hidden = receiptForm.querySelector(`[name="${field}"]`);
+        if (!hidden) {
+            hidden = document.createElement("input");
+            hidden.type = "hidden";
+            hidden.name = field;
+            receiptForm.appendChild(hidden);
+        }
+        hidden.value = value;
+    });
+}
+
 /* Prepara y envía todos los datos del formulario */
 async function submitAllData(event) {
     event.preventDefault();
@@ -153,17 +175,14 @@ async function submitAllData(event) {
     }
 
     toggleButtonState(submitBtn, true, "Enviando...");
-
     try {
         const formData = new FormData(form);
-
         const response = await fetch(form.action, {
             method: "POST",
             body: formData,
         });
 
         const result = await response.json();
-
         if (result.success) {
             showMessage("success", "¡Pago registrado correctamente!");
             bootstrap.Modal.getInstance(document.getElementById("receiptModal")).hide();
@@ -199,6 +218,23 @@ function getQueryParams() {
     };
 }
 
+function formatPackageName(packageName) {
+    const packageMap = {
+        "individual": "Asesoría Individual",
+        "grupo_3": "Paquete Grupal (3 sesiones)",
+        "grupo_5": "Paquete Grupal (5 sesiones)",
+        "premium": "Paquete Premium",
+        "basico": "Paquete Básico",
+        "avanzado": "Paquete Avanzado"
+    };
+
+    return packageMap[packageName] || 
+           packageName.replace(/_/g, " ")
+                     .split(" ")
+                     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                     .join(" ");
+}
+
 /* Actualiza el resumen con los parámetros de la URL */
 function updateSummaryFromParams() {
     const { package, price, regular, discount } = getQueryParams();
@@ -211,22 +247,33 @@ function updateSummaryFromParams() {
         return;
     }
 
-    const packageNameElement = document.getElementById("packageName");
-    const regularPriceElement = document.getElementById("regularPrice");
-    const discountElement = document.getElementById("discount");
-    const finalPriceElement = document.getElementById("finalPrice");
-    const totalPriceElement = document.getElementById("totalPrice");
-    const hiddenPackageElement = document.getElementById("hiddenPackage");
-    const hiddenAmountElement = document.getElementById("hiddenAmount");
+    // Formatear valores
+    const formattedPackage = formatPackageName(package);
+    const formattedPrice = parseFloat(price).toFixed(2);
+    const formattedRegular = parseFloat(regular || price).toFixed(2);
+    const formattedDiscount = discount ? parseFloat(discount).toFixed(2) : "0.00";
 
-    if (packageNameElement) packageNameElement.textContent = package.replace(/_/g, " ").toUpperCase();
-    if (regularPriceElement) regularPriceElement.textContent = `S/${parseFloat(regular || price).toFixed(2)}`;
-    if (discountElement) discountElement.textContent = discount ? `-S/${parseFloat(discount).toFixed(2)}` : "S/0.00";
-    if (finalPriceElement) finalPriceElement.textContent = `S/${parseFloat(price).toFixed(2)}`;
-    if (totalPriceElement) totalPriceElement.textContent = `S/${parseFloat(price).toFixed(2)}`;
+    // Actualizar elementos del resumen
+    const elementsToUpdate = {
+        "packageName": formattedPackage,
+        "regularPrice": `S/${formattedRegular}`,
+        "discount": discount ? `-S/${formattedDiscount}` : "S/0.00",
+        "finalPrice": `S/${formattedPrice}`,
+        "totalPrice": `S/${formattedPrice}`,
+        "yapePaquete": formattedPackage,
+        "yapeMonto": formattedPrice
+    };
 
-    if (hiddenPackageElement) hiddenPackageElement.value = package;
-    if (hiddenAmountElement) hiddenAmountElement.value = price;
+    Object.entries(elementsToUpdate).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+    });
+
+    // Actualizar campos ocultos
+    const hiddenPackage = document.getElementById("hiddenPackage");
+    const hiddenAmount = document.getElementById("hiddenAmount");
+    if (hiddenPackage) hiddenPackage.value = package;
+    if (hiddenAmount) hiddenAmount.value = price;
 }
 
 // ==============================================

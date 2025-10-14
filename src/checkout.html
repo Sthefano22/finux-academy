@@ -9,6 +9,7 @@
   <link href="css/estilos.css" rel="stylesheet"/>
 </head>
 <body>
+
   <!-- Header -->
   <div data-include="header"></div>
 
@@ -19,154 +20,200 @@
       <p class="lead">Completa tus datos y selecciona tu método de pago para asegurar tu asesoría</p>
     </div>
   </section>
-
-  <!-- Checkout Section -->
   <section class="py-5">
-      <div class="container">
-          <div class="row g-4">
-              <!-- Información personal -->
-              <div class="col-lg-8">
-                  <div class="card checkout-card shadow-sm">
-                      <div class="card-body">
-                          <h4 class="mb-4 fw-bold text-primary">Información personal</h4>
-                          <form id="checkoutForm" action="conexion.php" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
-                              <input type="hidden" name="package" id="hiddenPackage">
-                              <input type="hidden" name="amount" id="hiddenAmount">
-                              <div class="row g-3">
-                                  <!-- Nombres -->
-                                  <div class="col-md-6">
-                                      <label for="firstName" class="form-label">Nombres <span class="text-danger">*</span></label>
-                                      <input type="text" class="form-control" id="firstName" name="firstName" required>
-                                      <div class="invalid-feedback">Por favor ingresa tus nombres</div>
-                                  </div>
-                                  <!-- Apellidos -->
-                                  <div class="col-md-6">
-                                      <label for="lastName" class="form-label">Apellidos <span class="text-danger">*</span></label>
-                                      <input type="text" class="form-control" id="lastName" name="lastName" required>
-                                      <div class="invalid-feedback">Por favor ingresa tus apellidos</div>
-                                  </div>
-                                  <!-- Correo -->
-                                  <div class="col-md-6">
-                                      <label for="email" class="form-label">Correo electrónico <span class="text-danger">*</span></label>
-                                      <input type="email" class="form-control" id="email" name="email" required>
-                                      <div class="invalid-feedback">Por favor ingresa un correo válido</div>
-                                  </div>
-                                  <!-- Teléfono -->
-                                  <div class="col-md-6">
-                                      <label for="phone" class="form-label">Teléfono <span class="text-danger">*</span></label>
-                                      <input type="tel" class="form-control" id="phone" name="phone" required>
-                                      <div class="invalid-feedback">Por favor ingresa tu número telefónico</div>
-                                  </div>
-                                  <!-- Curso -->
-                                  <div class="col-12">
-                                      <label for="subject" class="form-label">Curso que necesitas asesoría <span class="text-danger">*</span></label>
-                                      <select class="form-select" id="subject" name="subject" required>
-                                          <option value="" disabled selected>Selecciona un curso</option>
-                                          <option value="redaccion_academica">Redacción Académica</option>
-                                          <option value="metodologia_investigacion">Metodología de la Investigación</option>
-                                          <option value="argumentacion">Argumentación</option>
-                                          <option value="tecnicas_estudio">Técnicas de Estudio</option>
-                                          <option value="gestion_proyectos">Gestión de Proyectos</option>
-                                          <option value="estadistica_basica">Estadística Básica</option>
-                                          <option value="programacion_basica">Programación Básica</option>
-                                          <option value="ingles_academico">Inglés Académico</option>
-                                      </select>
-                                      <div class="invalid-feedback">Por favor selecciona un curso</div>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Formulario -->
+        <div class="col-lg-8">
+          <div class="card checkout-card shadow-sm">
+            <div class="card-body">
+              <h4 class="mb-4 fw-bold text-primary">Información personal</h4>
+              <form id="checkoutForm" action="conexion.php" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <input type="hidden" name="package" id="hiddenPackage">
+                <input type="hidden" name="amount" id="hiddenAmount">
+                <input type="hidden" name="paymentMethod" value="Yape">
+                
+                <div class="row g-3">
+                  <!-- Nombres y Apellidos -->
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label">Nombres <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                    <div class="invalid-feedback">Por favor ingresa tus nombres</div>
                   </div>
-              </div>
-
-              <!-- Resumen -->
-              <div class="col-lg-4">
-                  <div class="card checkout-card shadow-sm">
-                      <div class="card-body">
-                          <h4 class="mb-4 fw-bold text-primary">Resumen de compra</h4>
-                          <div id="packageSummary">
-                              <div class="summary-item d-flex justify-content-between">
-                                  <span>Paquete:</span>
-                                  <span id="packageName" class="fw-bold">Asesoría individual</span>
-                              </div>
-                              <div class="summary-item d-flex justify-content-between">
-                                  <span>Precio regular:</span>
-                                  <span id="regularPrice" class="text-decoration-line-through text-muted">S/. 70.00</span>
-                              </div>
-                              <div class="summary-item d-flex justify-content-between">
-                                  <span>Descuento:</span>
-                                  <span id="discount" class="text-success">S/. 20.00</span>
-                              </div>
-                              <div class="summary-item d-flex justify-content-between">
-                                  <span>Precio final:</span>
-                                  <span id="finalPrice" class="fw-bold">S/. 50.00</span>
-                              </div>
-                          </div>
-                          <hr />
-                          <div class="summary-item d-flex justify-content-between fw-bold fs-5">
-                              <span>Total a pagar:</span>
-                              <span id="totalPrice" class="fw-bold">S/. 50.00</span>
-                          </div>
-                          <button id="confirmButton" class="btn btn-primary w-100 mt-4 py-2" data-bs-toggle="modal" data-bs-target="#receiptModal">
-                              <i class="bi bi-lock-fill"></i> Confirmar y realizar pago
-                          </button>
-                      </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Apellidos <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                    <div class="invalid-feedback">Por favor ingresa tus apellidos</div>
                   </div>
-              </div>
-          </div>
-
-          <!-- Modal para subir comprobante -->
-          <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="receiptModalLabel">Sube tu comprobante Yape</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                      </div>
-                      <div class="modal-body">
-                          <form id="receiptForm" action="conexion.php" method="POST" enctype="multipart/form-data">
-                              <div class="mb-3">
-                                  <label for="receiptFile" class="form-label">Comprobante (imagen o PDF) <span class="text-danger">*</span></label>
-                                  <input type="file" class="form-control" id="receiptFile" name="receipt" accept="image/*,application/pdf" required>
-                                  <div class="invalid-feedback">Por favor sube tu comprobante de pago.</div>
-                              </div>
-                              <div class="mb-3">
-                                  <label for="transactionCode" class="form-label">Código de transacción (opcional)</label>
-                                  <input type="text" class="form-control" id="transactionCode" name="transactionCode">
-                              </div>
-                              <button type="submit" class="btn btn-primary w-100">Enviar comprobante</button>
-                          </form>
-                      </div>
+                  
+                  <!-- Email y Teléfono -->
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Correo electrónico <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="invalid-feedback">Por favor ingresa un correo válido</div>
                   </div>
-              </div>
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label">Teléfono <span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                    <div class="invalid-feedback">Por favor ingresa tu número telefónico</div>
+                  </div>
+                  
+                  <!-- Universidad/Instituto -->
+                  <div class="col-12">
+                    <label for="university" class="form-label">Universidad/Instituto <span class="text-danger">*</span></label>
+                    <select class="form-select" id="university" name="university" required>
+                      <option value="" disabled selected>Selecciona tu universidad o instituto</option>
+                      <!-- Universidades -->
+                      <optgroup label="Universidades">
+                        <option value="PUCP">PUCP - Pontificia Universidad Católica del Perú</option>
+                        <option value="UNMSM">UNMSM - Universidad Nacional Mayor de San Marcos</option>
+                        <option value="UPC">UPC - Universidad Peruana de Ciencias Aplicadas</option>
+                        <option value="USIL">USIL - Universidad San Ignacio de Loyola</option>
+                        <option value="UNFV">UNFV - Universidad Nacional Federico Villarreal</option>
+                        <option value="UDEP">UDEP - Universidad de Piura</option>
+                        <option value="UNALM">UNALM - Universidad Nacional Agraria La Molina</option>
+                        <option value="UNI">UNI - Universidad Nacional de Ingeniería</option>
+                        <option value="UPN">UPN - Universidad Privada del Norte</option>
+                      </optgroup>
+                      <!-- Institutos -->
+                      <optgroup label="Institutos">
+                        <option value="SENATI">SENATI</option>
+                        <option value="TECSUP">TECSUP</option>
+                        <option value="IDAT">IDAT</option>
+                        <option value="CIBERTEC">CIBERTEC</option>
+                        <option value="ISIL">ISIL</option>
+                        <option value="IPAE">IPAE</option>
+                        <option value="SISE">SISE</option>
+                        <option value="CERTUS">CERTUS</option>
+                      </optgroup>
+                      <option value="Otra">Otros...</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor selecciona tu universidad o instituto</div>
+                  </div>
+                  
+                  <!-- Curso -->
+                  <div class="col-12">
+                    <label for="subject" class="form-label">Curso que necesitas asesoría <span class="text-danger">*</span></label>
+                    <select class="form-select" id="subject" name="subject" required>
+                      <option value="" disabled selected>Selecciona un curso</option>
+                      <option value="redaccion_academica">Redacción Académica</option>
+                      <option value="metodologia_investigacion">Metodología de la Investigación</option>
+                      <option value="argumentacion">Argumentación</option>
+                      <option value="tecnicas_estudio">Técnicas de Estudio</option>
+                      <option value="gestion_proyectos">Gestión de Proyectos</option>
+                      <option value="estadistica_basica">Estadística Básica</option>
+                      <option value="programacion_basica">Programación Básica</option>
+                      <option value="ingles_academico">Inglés Académico</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor selecciona un curso</div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
+        </div>
 
-          <!-- Detalles Yape -->
-          <div id="yapeDetails" class="mt-4">
-              <h5 class="mb-3 fw-bold text-primary">Detalles del pago con Yape</h5>
-              <div class="alert alert-info">
-                  <strong>Instrucciones:</strong>
-                  <ol class="mt-2">
-                      <li>Realiza el pago a través del QR o número Yape</li>
-                      <li>Captura el comprobante de pago</li>
-                      <li>Haz clic en "Confirmar y realizar pago"</li>
-                      <li>Sube tu comprobante en el siguiente paso</li>
-                  </ol>
+        <!-- Resumen Compra -->
+        <div class="col-lg-4">
+          <div class="card checkout-card shadow-sm">
+            <div class="card-body">
+              <h4 class="mb-4 fw-bold text-primary">Resumen de compra</h4>
+              <div id="packageSummary">
+                <div class="summary-item d-flex justify-content-between">
+                  <span>Paquete:</span>
+                  <span id="packageName" class="fw-bold">Asesoría individual</span>
+                </div>
+                <div class="summary-item d-flex justify-content-between">
+                  <span>Precio regular:</span>
+                  <span id="regularPrice" class="text-decoration-line-through text-muted">S/. 70.00</span>
+                </div>
+                <div class="summary-item d-flex justify-content-between">
+                  <span>Descuento:</span>
+                  <span id="discount" class="text-success">S/. 20.00</span>
+                </div>
+                <div class="summary-item d-flex justify-content-between">
+                  <span>Precio final:</span>
+                  <span id="finalPrice" class="fw-bold">S/. 50.00</span>
+                </div>
               </div>
-              <div class="text-center mb-4">
-                  <img src="img/QR-YAPE.jpg" alt="QR de Yape" class="img-fluid mb-2" style="max-width: 500px;" />
-                  <p class="text-muted">Escanea este código con la app Yape</p>
+              <hr />
+              <div class="summary-item d-flex justify-content-between fw-bold fs-5">
+                <span>Total a pagar:</span>
+                <span id="totalPrice" class="fw-bold">S/. 50.00</span>
               </div>
-              <div class="alert alert-primary">
-                  <strong>Número Yape:</strong> 904 931 423 <br />
-                  <strong>Nombre:</strong> Salvador Orbegoso Herrera <br />
-                  <strong>Monto:</strong> S/.
-              </div>
+              <button id="confirmButton" class="btn btn-primary w-100 mt-4 py-2" data-bs-toggle="modal" data-bs-target="#receiptModal">
+                <i class="bi bi-lock-fill"></i> Confirmar y realizar pago
+              </button>
+            </div>
           </div>
+        </div>
       </div>
+
+      <!-- Modal de Comprobante -->
+      <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="receiptModalLabel">Sube tu comprobante Yape</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              <form id="receiptForm" action="conexion.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="firstName">
+                <input type="hidden" name="lastName">
+                <input type="hidden" name="email">
+                <input type="hidden" name="phone">
+                <input type="hidden" name="university">
+                <input type="hidden" name="subject">
+                <input type="hidden" name="package" id="hiddenPackage">
+                <input type="hidden" name="amount" id="hiddenAmount">
+                <input type="hidden" name="paymentMethod" value="Yape">
+                <input type="hidden" name="package" id="hiddenPackage">
+                <input type="hidden" name="amount" id="hiddenAmount">
+                <div class="mb-3">
+                  <label for="receiptFile" class="form-label">Comprobante (imagen o PDF) <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control" id="receiptFile" name="receipt" accept="image/*,application/pdf" required>
+                  <div class="invalid-feedback">Por favor sube tu comprobante de pago.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="transactionCode" class="form-label">Código de transacción (opcional)</label>
+                  <input type="text" class="form-control" id="transactionCode" name="transactionCode">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Enviar comprobante</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalles Yape -->
+      <div id="yapeDetails" class="mt-4">
+        <h5 class="mb-3 fw-bold text-primary">Detalles del pago con Yape</h5>
+        <div class="alert alert-info">
+            <strong>Instrucciones:</strong>
+            <ol class="mt-2">
+            <li>Realiza el pago a través del QR o número Yape</li>
+            <li>Captura el comprobante de pago</li>
+            <li>Haz clic en "Confirmar y realizar pago"</li>
+            <li>Sube tu comprobante en el siguiente paso</li>
+            </ol>
+        </div>
+        <div class="text-center mb-4">
+            <img src="img/QR-YAPE.jpg" alt="QR de Yape" class="img-fluid mb-2" style="max-width: 500px;" />
+            <p class="text-muted">Escanea este código con la app Yape</p>
+        </div>
+        <div class="alert alert-primary">
+            <strong>Número Yape:</strong> 904 931 423 <br />
+            <strong>Nombre:</strong> Salvador Orbegoso Herrera <br />
+            <strong>Paquete:</strong> <span id="yapePaquete">Asesoría individual</span><br />
+            <strong>Monto:</strong> S/. <span id="yapeMonto">50.00</span>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- WhatsApp -->
+  <!-- otro medio de pago -->
   <section class="py-4 bg-light">
     <div class="container text-center">
       <h5 class="fw-bold text-primary">¿Prefieres otro medio de pago?</h5>
@@ -177,10 +224,10 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- footer -->
   <div data-include="footer"></div>
 
-  <!-- JS -->
+  <!-- scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
 </body>
